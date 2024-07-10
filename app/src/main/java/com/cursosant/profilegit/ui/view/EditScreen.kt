@@ -39,8 +39,10 @@ import com.cursosant.profilegit.ui.theme.ProfileGitTheme
 fun EditView(user: User, modifier: Modifier = Modifier, onSaveUser:(User) -> Unit) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    var imgUrl by remember { mutableStateOf("") }
     name = user.name
     email = user.email
+    imgUrl = user.imgUrl
 
     Column(modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
@@ -52,6 +54,11 @@ fun EditView(user: User, modifier: Modifier = Modifier, onSaveUser:(User) -> Uni
             value = email,
             onValueChange = {email = it; user.email = it},
             label = {Text(text = "Email")})
+
+        OutlinedTextField(modifier = Modifier.padding(16.dp),
+            value = imgUrl,
+            onValueChange = {imgUrl = it; user.imgUrl = it},
+            label = {Text(text = "Imagen")})
 
         Button(modifier = Modifier.padding(32.dp),
             onClick = { onSaveUser(user) }){
