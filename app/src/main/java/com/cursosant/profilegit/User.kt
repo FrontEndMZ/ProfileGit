@@ -16,6 +16,6 @@ package com.cursosant.profilegit
  ***/
 data class User(var name: String,
                 var email: String,
-                val imgUrl: String,
+                var imgUrl: String,
                 val lat: Double,
                 val long: Double)
