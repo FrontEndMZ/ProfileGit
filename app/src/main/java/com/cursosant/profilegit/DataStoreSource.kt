@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.flow.first
+import kotlin.random.Random
 
 /****
  * Project: Profile Git
@@ -40,7 +41,12 @@ object DataStoreSource {
     }
 
     fun checkUser(context: Context) = liveData {
-        emit(mapUserPreferences(context.dataStore.data.first().toPreferences()))
+        val isOutside = Random.nextBoolean()
+        if (isOutside) {
+            emit(User("-", "-", "", 0.0, 0.0))
+        } else {
+            emit(mapUserPreferences(context.dataStore.data.first().toPreferences()))
+        }
     }
 
     private fun mapSettingsPreferences(preferences: Preferences): Boolean {
