@@ -42,7 +42,7 @@ object DataStoreSource {
 
     fun checkUser(context: Context) = liveData {
         val isOutside = Random.nextBoolean()
-        if (isOutside) {
+        if (isOutside && (context is MainActivity)) {
             emit(User("-", "-", "", 0.0, 0.0))
         } else {
             emit(mapUserPreferences(context.dataStore.data.first().toPreferences()))
