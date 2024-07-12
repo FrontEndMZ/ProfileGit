@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        DataStoreSource.checkUser(this).observe(this) { user ->
+        DataStoreSource.checkSafeUser(this).observe(this) { user ->
             userState.value = user
         }
     }

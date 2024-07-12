@@ -34,7 +34,7 @@ class EditActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val userState = mutableStateOf(User("", "", "", 0.0, 0.0))
-        DataStoreSource.checkUser(this).observe(this) { user ->
+        DataStoreSource.checkSafeUser(this).observe(this) { user ->
             userState.value = user
         }
 
